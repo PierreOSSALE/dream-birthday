@@ -56,7 +56,7 @@ export function DetailRow({
   value: string;
 }) {
   return (
-    <div className="flex items-start gap-4 bg-white/70 backdrop-blur-sm border border-white/30 rounded-2xl p-5 md:p-10">
+    <div className="flex items-start gap-4 bg-white backdrop-blur-sm border border-white/30 rounded-2xl p-5 md:p-10">
       <div className="w-10 h-10 rounded-full gradient-gold text-white flex items-center justify-center shrink-0">
         {icon}
       </div>

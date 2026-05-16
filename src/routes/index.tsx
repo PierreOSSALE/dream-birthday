@@ -83,7 +83,7 @@ function Landing() {
             onLoad={() => setIsImageLoaded(true)}
           />
         </picture>{" "}
-        <div className="absolute inset-0 bg-linear-to-b from-black/66 md:from-black/40 to-black/20" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#061449]/60 " />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
           <p className="label-caps opacity-95 mt-30 md:mt-40">Invitations digitales</p>
           <h1 className="font-serif italic text-3xl md:text-7xl mt-30 md:mt-30">

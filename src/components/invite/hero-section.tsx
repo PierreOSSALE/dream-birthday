@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import birthdayHero from "@/assets/hero-desktop.png";
 import birthdayHeroMobile from "@/assets/hero-mobile.png";
 import { BirthdaySparkle } from "./ui";
+import { IoMdArrowDown } from "react-icons/io";
 
 interface Props {
   celebrantName: string;
@@ -43,8 +44,8 @@ export function HeroSection({ celebrantName, eventTitle }: Props) {
         />
       </picture>
 
-      <div className="absolute inset-0 bg-linear-to-b from-[#061449]/10 via-[#061449]/35 to-[#061449]/78" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-white/75 via-white/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#061449]/60 " />
+      {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/75 via-black/30 to-transparent pointer-events-none" /> */}
 
       <div className="relative z-50 h-full flex flex-col items-center justify-between py-12 px-6 text-white text-center">
         <BirthdaySparkle className="w-16 h-8 md:mt-10 text-gold-light" />
@@ -53,18 +54,19 @@ export function HeroSection({ celebrantName, eventTitle }: Props) {
         </p>
 
         <div className="flex-1 flex flex-col items-center justify-center">
-          <p className="label-caps text-gold-light mb-4">{eventTitle}</p>
+          <p className=" text-white mb-4 font-light text-lg">{eventTitle}</p>
           <h1 className="font-serif italic font-normal md:mt-2 text-7xl md:text-8xl leading-none tracking-tight">
-            {celebrantName}
+            Invitation
           </h1>
         </div>
 
         <button
           onClick={scrollToNext}
-          className="float-anim pb-8 cursor-pointer hover:opacity-70 transition-opacity focus:outline-none"
+          className="float-anim text-2xl pb-8 cursor-pointer hover:opacity-70 transition-opacity focus:outline-none"
           aria-label="Defiler vers le bas"
         >
           <p className="label-caps tracking-[0.2em] opacity-90">DEFILER</p>
+          <IoMdArrowDown className="text-white mt-2 mx-auto" />
         </button>
       </div>
     </section>

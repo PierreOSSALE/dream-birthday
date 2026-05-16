@@ -13,7 +13,7 @@ export function WelcomeSection({ celebrantName, eventTitle, guestName, invitatio
   return (
     <section className="relative w-full overflow-hidden py-16 px-4 text-center">
       <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
-        <p className="label-caps text-muted-foreground">Bienvenue a la fete</p>
+        <p className="label-caps text-muted-foreground">Bienvenue a la fête</p>
       </SlideReveal>
 
       <div className="my-8 space-y-3">

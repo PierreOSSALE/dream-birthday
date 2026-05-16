@@ -6,15 +6,12 @@ import { useGSAP } from "@gsap/react";
 
 type InfiniteMarqueeProps = {
   children: React.ReactNode;
-  duration?: number;
+  /** Pixels per second — vitesse constante quelle que soit la largeur du contenu */
+  speed?: number;
   className?: string;
 };
 
-export default function InfiniteMarquee({
-  children,
-  duration = 18,
-  className,
-}: InfiniteMarqueeProps) {
+export default function InfiniteMarquee({ children, speed = 80, className }: InfiniteMarqueeProps) {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReduced = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -23,6 +20,12 @@ export default function InfiniteMarquee({
 
   useGSAP(() => {
     if (!ref.current || prefersReduced) return;
+
+    // Les enfants sont dupliqués → la moitié de scrollWidth = largeur réelle du contenu
+    const totalWidth = ref.current.scrollWidth / 2;
+
+    // Durée calculée pour une vitesse constante en px/s
+    const duration = totalWidth / speed;
 
     gsap.to(ref.current, {
       xPercent: -50,

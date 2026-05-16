@@ -55,19 +55,27 @@ export function RsvpSection({
               value={name}
               onChange={(e) => onNameChange(e.target.value)}
               placeholder="Votre nom complet"
-              className="w-full bg-white/80 border border-border rounded-full px-6 py-3 text-center focus:outline-none focus:ring-2 focus:ring-gold"
+              className="w-full bg-white border border-border rounded-full px-6 py-3 text-center focus:outline-none focus:ring-2 focus:ring-gold"
             />
           </SlideReveal>
 
           <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
             <div className="flex flex-col gap-3">
               <HoverScale>
-                <button disabled={busy} onClick={onConfirm} className="pill pill-primary disabled:opacity-50">
+                <button
+                  disabled={busy}
+                  onClick={onConfirm}
+                  className="pill pill-primary disabled:opacity-50"
+                >
                   Confirmer ma venue
                 </button>
               </HoverScale>
               <HoverScale>
-                <button disabled={busy} onClick={onDecline} className="pill pill-outline disabled:opacity-50">
+                <button
+                  disabled={busy}
+                  onClick={onDecline}
+                  className="pill pill-outline disabled:opacity-50"
+                >
                   Je ne pourrai pas venir
                 </button>
               </HoverScale>

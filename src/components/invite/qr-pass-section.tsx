@@ -54,7 +54,7 @@ export function QrPassSection({ guestName, inviteSlug, qrCode, status, birthdayD
             <img
               src={currentQrCode}
               alt="QR code"
-              className="w-48 h-48 mx-auto mt-6 rounded-2xl bg-white p-3"
+              className="w-48 h-48 mx-auto mt-6 rounded-2xl bg-gold p-3"
             />
           ) : (
             <div className="w-48 h-48 mx-auto mt-6 bg-muted rounded-2xl flex items-center justify-center text-muted-foreground text-sm">

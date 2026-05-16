@@ -23,6 +23,14 @@ interface Props {
   onSubmit: () => void;
 }
 
+/**
+ * Vitesse de défilement en pixels/seconde.
+ * La même valeur est utilisée sur tous les marquees et sur tous les écrans,
+ * ce qui garantit une vitesse visuelle identique quelle que soit la quantité
+ * de messages ou la taille de l'écran.
+ */
+const MARQUEE_SPEED = 80;
+
 export function GuestbookSection({
   messages,
   name,
@@ -32,6 +40,8 @@ export function GuestbookSection({
   onContentChange,
   onSubmit,
 }: Props) {
+  const half = Math.ceil(messages.length / 2);
+
   return (
     <section className="px-6 py-16 mx-auto">
       <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
@@ -43,6 +53,7 @@ export function GuestbookSection({
       </SlideReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 max-w-md md:max-w-5xl mx-auto">
+        {/* ── Formulaire ── */}
         <div>
           <div className="mt-6 space-y-3">
             <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
@@ -50,7 +61,7 @@ export function GuestbookSection({
                 value={name}
                 onChange={(e) => onNameChange(e.target.value)}
                 placeholder="Votre prenom"
-                className="w-full bg-white/80 border border-border rounded-2xl px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+                className="w-full bg-white border border-border rounded-2xl px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
               />
             </SlideReveal>
             <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
@@ -60,12 +71,16 @@ export function GuestbookSection({
                 rows={3}
                 maxLength={1000}
                 placeholder="Votre message pour l'anniversaire..."
-                className="w-full bg-white/80 border border-border rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gold resize-none"
+                className="w-full bg-white border border-border rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-gold resize-none"
               />
             </SlideReveal>
             <SlideReveal direction="down" distance={50} duration={2} delay={0.1}>
               <HoverScale>
-                <button disabled={busy || !content.trim()} onClick={onSubmit} className="pill pill-primary w-full">
+                <button
+                  disabled={busy || !content.trim()}
+                  onClick={onSubmit}
+                  className="pill pill-primary w-full"
+                >
                   Laisser un message
                 </button>
               </HoverScale>
@@ -79,41 +94,20 @@ export function GuestbookSection({
           </SlideReveal>
         </div>
 
+        {/* ── Marquees ── */}
         <ScrollReveal>
-          <div className="h-full flex flex-col justify-between py-6">
-            <div className="hidden md:block">
-              <InfiniteMarquee className="pb-8">
-                {messages.slice(0, Math.ceil(messages.length / 2)).map((m) => (
-                  <div key={`top-${m.id}`} className="bg-white/80 rounded-lg px-10 py-10 shadow-sm">
-                    <p className="font-serif italic">"{m.content}"</p>
-                    <p className="label-caps text-gold text-sm mt-1">- {m.guest_name}</p>
-                  </div>
-                ))}
-              </InfiniteMarquee>
-            </div>
-
-            <div className="block md:hidden">
-              <InfiniteMarquee className="pb-8">
-                {messages.map((m) => (
-                  <div key={`single-${m.id}`} className="bg-white/80 rounded-lg px-6 py-6 shadow-sm">
-                    <p className="font-serif italic">"{m.content}"</p>
-                    <p className="label-caps text-gold text-sm mt-1">- {m.guest_name}</p>
-                  </div>
-                ))}
-              </InfiniteMarquee>
-            </div>
-
-            <div className="hidden md:block">
-              <InfiniteMarquee className="pt-8">
-                {messages.slice(Math.ceil(messages.length / 2)).map((m) => (
-                  <div key={`bottom-${m.id}`} className="bg-white/80 rounded-lg px-10 p-10">
-                    <p className="font-serif italic">"{m.content}"</p>
-                    <p className="label-caps text-gold text-sm mt-1">- {m.guest_name}</p>
-                  </div>
-                ))}
-              </InfiniteMarquee>
-            </div>
-          </div>
+          {/* Desktop : ligne du bas (deuxième moitié) */}
+          <InfiniteMarquee speed={MARQUEE_SPEED} className="py-8">
+            {messages.slice(half).map((m) => (
+              <div
+                key={`bottom-${m.id}`}
+                className="bg-white rounded-lg px-10 p-10 max-w-sm text-center mx-auto shadow-sm"
+              >
+                <p className="font-serif italic text-2xl">"{m.content}"</p>
+                <p className="label-caps text-gold text-sm mt-1">- {m.guest_name}</p>
+              </div>
+            ))}
+          </InfiniteMarquee>
         </ScrollReveal>
       </div>
     </section>

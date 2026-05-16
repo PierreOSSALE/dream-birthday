@@ -20,7 +20,8 @@ export const Route = createFileRoute("/admin")({
       { title: "Admin - Anniversaire" },
       {
         name: "description",
-        content: "Espace administrateur - gerer convives, messages et parametres de l'anniversaire.",
+        content:
+          "Espace administrateur - gerer convives, messages et parametres de l'anniversaire.",
       },
     ],
   }),
@@ -100,7 +101,9 @@ function AdminApp() {
               key={t.k}
               onClick={() => setTab(t.k)}
               className={`label-caps inline-flex items-center gap-2 px-3 py-2 border-b-2 transition-colors ${
-                tab === t.k ? "border-gold text-gold" : "border-transparent text-muted-foreground hover:text-foreground"
+                tab === t.k
+                  ? "border-gold text-gold"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               {t.icon}

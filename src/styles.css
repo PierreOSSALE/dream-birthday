@@ -223,7 +223,7 @@
   }
 
   .card-glass {
-    background: rgba(255, 255, 255, 0.72);
+    background: #fff;
     backdrop-filter: blur(14px);
     border: 1px solid rgba(148, 197, 255, 0.38);
   }
