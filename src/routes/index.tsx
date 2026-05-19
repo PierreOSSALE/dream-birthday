@@ -8,7 +8,6 @@ import coupleImgMobile from "@/assets/hero-mobile.jpg";
 import { GoldDivider, GoldRings } from "@/components/invite/Decor";
 import SlideReveal from "@/components/animations/SlideReveal";
 import { useEffect, useRef, useState } from "react";
-// Landing page reads wedding data from the route loader; no external props required
 
 const getLanding = createServerFn({ method: "GET" }).handler(async () => {
   const { data: birthday } = await supabaseAdmin

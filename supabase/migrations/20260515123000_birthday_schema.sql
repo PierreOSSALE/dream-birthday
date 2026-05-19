@@ -54,7 +54,3 @@ set
     email_template,
     'Bonjour {{name}}, vous etes cordialement invite(e) a {{event_title}} de {{celebrant}}. Votre invitation personnelle : {{url}}'
   );
-
-insert into storage.buckets (id, name, public)
-values ('birthday', 'birthday', true)
-on conflict (id) do nothing;

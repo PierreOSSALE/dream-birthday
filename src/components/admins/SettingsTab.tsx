@@ -93,9 +93,14 @@ export function SettingsTab() {
       <h2 className="font-serif italic text-2xl">Parametres de l'anniversaire</h2>
 
       <div className="grid sm:grid-cols-2 gap-3">
-        <Field label="Personne fetee" value={form.celebrant_name} onChange={(v) => set("celebrant_name", v)} />
-        <Field label="Titre de l'evenement" value={form.event_title} onChange={(v) => set("event_title", v)} />
-        <Field label="Date & heure" value={form.date} type="datetime-local" onChange={(v) => set("date", v)} />
+        {/* <Field label="Personne fetee" value={form.celebrant_name} onChange={(v) => set("celebrant_name", v)} />
+        <Field label="Titre de l'evenement" value={form.event_title} onChange={(v) => set("event_title", v)} /> */}
+        <Field
+          label="Date & heure"
+          value={form.date}
+          type="datetime-local"
+          onChange={(v) => set("date", v)}
+        />
         <Field label="Lieu" value={form.venue} onChange={(v) => set("venue", v)} />
       </div>
 
